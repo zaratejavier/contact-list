@@ -63,13 +63,19 @@ def removeContact
 end
 
 def editContact
-  puts "What index would you like to change?"
-  arrIndex = gets.to_i
-  puts "What is your new contacts first name?"
-  newContact = gets
-
-  @contact[arrIndex] = newContact
+  puts "What contact would you like to update?"
+  @contact.each_with_index do |cont, index|
+    puts "#{index + 1}) Name: #{cont}"
   end
+
+  user_choice = gets.to_i
+  puts "Alright you want to update #{@contact[user_choice - 1]}"
+  puts "What do you want to change it to?"
+  new_contact_name = gets.strip
+
+  @contact[user_choice - 1] = new_contact_name
+  puts @contacts
+end
 
 user_choice
 
